@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 
+const allTypes = ['posts', 'albums', 'todos'];
 
 function Content() {
     const [title, setTitle] = useState('');
     const [data, setData] = useState([]);
     const [type, setType] = useState('posts');
-    const allTypes = ['posts', 'albums', 'todos'];
+    const [width, setWidth] = useState(window.innerWidth);
+    const [showGoToTop, setShowGoToTop] = useState(false);
 
     useEffect(() => {
         document.title = title;
@@ -17,8 +19,34 @@ function Content() {
             .then((data) => {setData(data)})
     }, [type])
 
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowGoToTop(window.scrollY >= 200);
+        }
+        window.addEventListener('scroll', handleScroll);
+
+        // Clean up function
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWidth(window.innerWidth);
+        }
+        window.addEventListener('resize', handleResize);
+
+        // Clean up function
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        }
+    }, []);
+
     return (
         <div>
+            <h2>Window width: {width}</h2>
+
             {allTypes.map((item, index) => (
                 <button 
                     key={index}
@@ -29,16 +57,27 @@ function Content() {
                 </button>
             ))
             }
-            <input 
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-            />
+
+            <div>
+                <input 
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                />
+            </div>
 
             <ul>
                 {data.map((datum, index) => (
                     <li key={index}>{datum.title}</li>
                 ))}
             </ul>
+
+            {showGoToTop && (
+                <button
+                    style={{position: "fixed", right: "20px", bottom: "20px"}}
+                    onClick={() => window.scrollTo(0 ,0)}
+                >Go to top
+                </button>
+            )}
         </div>
     )
 }
