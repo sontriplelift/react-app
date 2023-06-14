@@ -8,6 +8,7 @@ function Content() {
     const [type, setType] = useState('posts');
     const [width, setWidth] = useState(window.innerWidth);
     const [showGoToTop, setShowGoToTop] = useState(false);
+    const [countdown, setCountdown] = useState(200);
 
     useEffect(() => {
         document.title = title;
@@ -43,9 +44,18 @@ function Content() {
         }
     }, []);
 
+    useEffect(() => {
+        const timerId = setInterval(() => {
+            setCountdown(prev => prev - 1);
+        }, 1000);
+
+        return () => clearInterval(timerId);
+    }, []);
+
     return (
         <div>
             <h2>Window width: {width}</h2>
+            <h2>Timer: {countdown}</h2>
 
             {allTypes.map((item, index) => (
                 <button 
