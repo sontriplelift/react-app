@@ -3,6 +3,7 @@ import { useState } from "react";
 import Content from './Content';
 import PreviewAvatar from './PreviewAvatar';
 import FakeChatApp from './FakeChatApp';
+import CountUseLayoutEffect from './CountUseLayoutEffect';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -12,7 +13,8 @@ function App() {
       <button onClick={() => setShow(!show)}>Toggle</button>
       {/* {show && <Content />} */}
       {/* {show && <PreviewAvatar />} */}
-      {show && <FakeChatApp />}
+      {/* {show && <FakeChatApp />} */}
+      {show && <CountUseLayoutEffect />}
     </div>
   );
 }
