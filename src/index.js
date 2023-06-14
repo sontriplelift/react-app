@@ -4,6 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Fake chats
+function emitChat(id) {
+  setInterval(() => {
+    window.dispatchEvent(
+      new CustomEvent(`channel-${id}`, {
+        detail: `Chat content in Channel ${id}: ${(Math.random() + 1).toString(36).substring(2)}`
+      })
+    )
+  }, 2000);
+}
+emitChat(1);
+emitChat(2);
+emitChat(3);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
