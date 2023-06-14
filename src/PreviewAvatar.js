@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 function PreviewAvatar() {
     const [avatar, setAvatar] = useState();
 
-    console.log('avatar', avatar);
-
     useEffect(() => {
         return () => {
             avatar && URL.revokeObjectURL(avatar.preview);
@@ -15,12 +13,14 @@ function PreviewAvatar() {
         const file = e.target.files[0];
         file.preview = URL.createObjectURL(file);
         setAvatar(file);
+
+        e.target.value = null;
     }
 
     return (
         <div>
             <div>
-                <input 
+                <input
                     type="file"
                     onChange={handlePreviewAvatar}
                 />
