@@ -3,29 +3,40 @@ import { useEffect, useState } from "react";
 
 function Content() {
     const [title, setTitle] = useState('');
-    const [posts, setPosts] = useState([]);
+    const [data, setData] = useState([]);
+    const [type, setType] = useState('posts');
+    const allTypes = ['posts', 'albums', 'todos'];
 
     useEffect(() => {
         document.title = title;
     })
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/posts')
+        fetch(`https://jsonplaceholder.typicode.com/${type}`)
             .then(res => res.json())
-            .then((posts) => {setPosts(posts)})
-    }, [])
+            .then((data) => {setData(data)})
+    }, [type])
 
     return (
         <div>
+            {allTypes.map((item, index) => (
+                <button 
+                    key={index}
+                    onClick={() => setType(item)}
+                    style={type === item ? {color: "#fff", backgroundColor: "#111"} : {}}
+                >
+                    {item}
+                </button>
+            ))
+            }
             <input 
                 value={title}
                 onChange={e => setTitle(e.target.value)}
             />
-            {console.log('render')}
 
             <ul>
-                {posts.map((post, index) => (
-                    <li key={index}>{post.title}</li>
+                {data.map((datum, index) => (
+                    <li key={index}>{datum.title}</li>
                 ))}
             </ul>
         </div>
