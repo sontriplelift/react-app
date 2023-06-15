@@ -3,6 +3,11 @@
   padding: 30px;
 }
 
+.dark {
+  color: yellow;
+  background-color: black;
+}
+
 div {
   padding: 10px;
 }
