@@ -1,5 +1,5 @@
 import './App.css';
-import { createContext, useCallback, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import Content from './Content';
 import PreviewAvatar from './PreviewAvatar';
 import FakeChatApp from './FakeChatApp';
@@ -12,8 +12,7 @@ import SampleUseReducer from './SampleUseReducer';
 import TodoAppUseReducer from './TodoAppUseReducer';
 import TodoUseReducer from './Todo';
 import ChildUseContext from './ChildUseContext';
-
-export const ThemeContext = createContext();
+import { ThemeContext } from './ThemeContext';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -25,34 +24,34 @@ function App() {
       setCount(prev => prev + 1);
   }, []);
 
+  const context = useContext(ThemeContext);
+
   return (
-    <ThemeContext.Provider value={theme}>
-      <div className="App">
-        <button onClick={() => setShow(!show)}>Toggle</button>
-        {/* {show && <Content />} */}
-        {/* {show && <PreviewAvatar />} */}
-        {/* {show && <FakeChatApp />} */}
-        {/* {show && <CountUseLayoutEffect />} */}
-        {/* {show && <CountUseRef />} */}
+    <div className="App">
+      <button onClick={() => setShow(!show)}>Toggle</button>
+      {/* {show && <Content />} */}
+      {/* {show && <PreviewAvatar />} */}
+      {/* {show && <FakeChatApp />} */}
+      {/* {show && <CountUseLayoutEffect />} */}
+      {/* {show && <CountUseRef />} */}
 
-        {/* {show && <CountMemo count={count}/>}
-        <h1>{count}</h1>
-        <h1>{count2}</h1>
-        <button onClick={() => setCount(count + 1)}>Click 1</button>
-        <button onClick={() => setCount2(count2 + 1)}>Click 2</button> */}
+      {/* {show && <CountMemo count={count}/>}
+      <h1>{count}</h1>
+      <h1>{count2}</h1>
+      <button onClick={() => setCount(count + 1)}>Click 1</button>
+      <button onClick={() => setCount2(count2 + 1)}>Click 2</button> */}
 
-        {/* {show && <CountUseCallback onIncrease={handleIncrease}/>}
-        <h1>{count}</h1> */}
+      {/* {show && <CountUseCallback onIncrease={handleIncrease}/>}
+      <h1>{count}</h1> */}
 
-        {/* {show && <SampleUseMemo />} */}
-        {/* {show && <SampleUseReducer />} */}
-        {/* {show && <TodoAppUseReducer />} */}
-        {/* {show && <TodoUseReducer />} */}
+      {/* {show && <SampleUseMemo />} */}
+      {/* {show && <SampleUseReducer />} */}
+      {/* {show && <TodoAppUseReducer />} */}
+      {/* {show && <TodoUseReducer />} */}
 
-        <button onClick={() => theme === 'light' ? setTheme('dark') : setTheme('light')}>Toggle theme</button>
-        {show && <ChildUseContext/>}
-      </div>
-    </ThemeContext.Provider>
+      <button onClick={context.toggleTheme}>Toggle theme</button>
+      {show && <ChildUseContext/>}
+    </div>
   );
 }
 
