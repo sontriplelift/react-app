@@ -10,6 +10,7 @@ import CountUseCallback from './CountUseCallback';
 import SampleUseMemo from './SampleUseMemo';
 import SampleUseReducer from './SampleUseReducer';
 import TodoAppUseReducer from './TodoAppUseReducer';
+import TodoUseReducer from './Todo';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -40,7 +41,8 @@ function App() {
 
       {/* {show && <SampleUseMemo />} */}
       {/* {show && <SampleUseReducer />} */}
-      {show && <TodoAppUseReducer />}
+      {/* {show && <TodoAppUseReducer />} */}
+      {show && <TodoUseReducer />}
     </div>
   );
 }
