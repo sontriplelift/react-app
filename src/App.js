@@ -9,6 +9,7 @@ import CountMemo from './CountMemo';
 import CountUseCallback from './CountUseCallback';
 import SampleUseMemo from './SampleUseMemo';
 import SampleUseReducer from './SampleUseReducer';
+import TodoAppUseReducer from './TodoAppUseReducer';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -38,7 +39,8 @@ function App() {
       <h1>{count}</h1> */}
 
       {/* {show && <SampleUseMemo />} */}
-      {show && <SampleUseReducer />}
+      {/* {show && <SampleUseReducer />} */}
+      {show && <TodoAppUseReducer />}
     </div>
   );
 }
