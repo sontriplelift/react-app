@@ -7,6 +7,7 @@ import CountUseLayoutEffect from './CountUseLayoutEffect';
 import CountUseRef from './CountUseRef';
 import CountMemo from './CountMemo';
 import CountUseCallback from './CountUseCallback';
+import SampleUseMemo from './SampleUseMemo';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -32,8 +33,10 @@ function App() {
       <button onClick={() => setCount(count + 1)}>Click 1</button>
       <button onClick={() => setCount2(count2 + 1)}>Click 2</button> */}
 
-      {show && <CountUseCallback onIncrease={handleIncrease}/>}
-      <h1>{count}</h1>
+      {/* {show && <CountUseCallback onIncrease={handleIncrease}/>}
+      <h1>{count}</h1> */}
+
+      {show && <SampleUseMemo />}
     </div>
   );
 }
