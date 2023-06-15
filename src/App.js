@@ -4,6 +4,7 @@ import Content from './Content';
 import PreviewAvatar from './PreviewAvatar';
 import FakeChatApp from './FakeChatApp';
 import CountUseLayoutEffect from './CountUseLayoutEffect';
+import CountUseRef from './CountUseRef';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -14,7 +15,8 @@ function App() {
       {/* {show && <Content />} */}
       {/* {show && <PreviewAvatar />} */}
       {/* {show && <FakeChatApp />} */}
-      {show && <CountUseLayoutEffect />}
+      {/* {show && <CountUseLayoutEffect />} */}
+      {show && <CountUseRef />}
     </div>
   );
 }
