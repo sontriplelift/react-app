@@ -8,6 +8,7 @@ import CountUseRef from './CountUseRef';
 import CountMemo from './CountMemo';
 import CountUseCallback from './CountUseCallback';
 import SampleUseMemo from './SampleUseMemo';
+import SampleUseReducer from './SampleUseReducer';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -36,7 +37,8 @@ function App() {
       {/* {show && <CountUseCallback onIncrease={handleIncrease}/>}
       <h1>{count}</h1> */}
 
-      {show && <SampleUseMemo />}
+      {/* {show && <SampleUseMemo />} */}
+      {show && <SampleUseReducer />}
     </div>
   );
 }
