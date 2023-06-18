@@ -1,5 +1,5 @@
 import './App.css';
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useRef, useState } from "react";
 import Content from './Content';
 import PreviewAvatar from './PreviewAvatar';
 import FakeChatApp from './FakeChatApp';
@@ -13,6 +13,7 @@ import TodoAppUseReducer from './TodoAppUseReducer';
 import TodoUseReducer from './Todo';
 import ChildUseContext from './ChildUseContext';
 import { ThemeContext } from './ThemeContext';
+import Video from './Video';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -25,6 +26,8 @@ function App() {
   }, []);
 
   const context = useContext(ThemeContext);
+
+  const videoRef = useRef();
 
   return (
     <div className="App">
@@ -49,8 +52,12 @@ function App() {
       {/* {show && <TodoAppUseReducer />} */}
       {/* {show && <TodoUseReducer />} */}
 
-      <button onClick={context.toggleTheme}>Toggle theme</button>
-      {show && <ChildUseContext/>}
+      {/* <button onClick={context.toggleTheme}>Toggle theme</button>
+      {show && <ChildUseContext/>} */}
+
+      <Video ref={videoRef}/>
+      <button onClick={() => {videoRef.current.play()}}>Play</button>
+      <button onClick={() => {videoRef.current.pause()}}>Pause</button>
     </div>
   );
 }
