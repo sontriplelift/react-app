@@ -13,11 +13,8 @@ import TodoAppUseReducer from './TodoAppUseReducer';
 import TodoUseReducer from './Todo';
 import ChildUseContext from './ChildUseContext';
 import { ThemeContext } from './ThemeContext';
-<<<<<<< HEAD
-import Video from './Video';
-=======
 import { actions, useStore } from './store';
->>>>>>> 7309f78 (Context + useReducer (store))
+import Video from './Video';
 
 function App() {
   const [show, setShow] = useState(false);
@@ -31,13 +28,10 @@ function App() {
 
   const context = useContext(ThemeContext);
 
-<<<<<<< HEAD
-  const videoRef = useRef();
-=======
   const [state, dispatch] = useStore();
   const { todoInput, todos } = state;
-  console.log(state);
->>>>>>> 7309f78 (Context + useReducer (store))
+
+  const videoRef = useRef();
 
   return (
     <div className="App">
