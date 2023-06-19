@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from './ThemeContext';
+import { StoreProvider } from './store';
 
 // Fake chats
 function emitChat(id) {
@@ -22,9 +23,9 @@ emitChat(3);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-  <ThemeProvider>
+  <StoreProvider>
     <App />
-  </ThemeProvider>
+  </StoreProvider>
   // </React.StrictMode>
 );
 

@@ -13,7 +13,11 @@ import TodoAppUseReducer from './TodoAppUseReducer';
 import TodoUseReducer from './Todo';
 import ChildUseContext from './ChildUseContext';
 import { ThemeContext } from './ThemeContext';
+<<<<<<< HEAD
 import Video from './Video';
+=======
+import { actions, useStore } from './store';
+>>>>>>> 7309f78 (Context + useReducer (store))
 
 function App() {
   const [show, setShow] = useState(false);
@@ -27,7 +31,13 @@ function App() {
 
   const context = useContext(ThemeContext);
 
+<<<<<<< HEAD
   const videoRef = useRef();
+=======
+  const [state, dispatch] = useStore();
+  const { todoInput, todos } = state;
+  console.log(state);
+>>>>>>> 7309f78 (Context + useReducer (store))
 
   return (
     <div className="App">
@@ -54,6 +64,18 @@ function App() {
 
       {/* <button onClick={context.toggleTheme}>Toggle theme</button>
       {show && <ChildUseContext/>} */}
+
+      {/* <input
+        value={todoInput}
+        placeholder='Enter todo...'
+        onChange={(e) => dispatch(actions.setTodoInput(e.target.value))}
+      />
+      <button onClick={() => dispatch(actions.addTodo(todoInput))}>Add</button>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul> */}
 
       <Video ref={videoRef}/>
       <button onClick={() => {videoRef.current.play()}}>Play</button>
